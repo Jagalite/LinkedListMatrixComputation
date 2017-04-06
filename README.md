@@ -14,11 +14,13 @@
 ## Install
 
 ```
+Download and execute the command 'bash make.bash'
 ```
 
 ## Usage
 
 ```
+Edit the main method
 ```
 
 ## Contribute
