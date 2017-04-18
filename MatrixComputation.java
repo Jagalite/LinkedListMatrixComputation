@@ -76,7 +76,17 @@ public class MatrixComputation {
         System.out.println("=============================11. Matrix O = 5 * B: ");
         SparseMatrix matrixO = matrixB.scalarMultiply(5);
         matrixO.print();        
-        //follow the format above and fill up to 22. Matrix Z = M * T
+    
+        System.out.println("=============================12. Matrix P = A * B: ");
+        SparseMatrix matrixP = matrixA.matrixMultiply(matrixB);
+        matrixP.print();
+        
+        System.out.println("=============================13. Matrix Q = D^5: ");
+        SparseMatrix matrixQ = matrixD.power(5);
+        matrixQ.print();
+        
+            
+        
         
         //Optional
         System.out.println("=============================23. Matrix AA = transpose(F): ");

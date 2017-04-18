@@ -236,9 +236,29 @@ public class SparseMatrix {
     }
 
     //transpose matrix itself
-    public SparseMatrix transpose() {
-        SparseMatrix result = null;
-        return result;
+    public SparseMatrix transpose()  throws Exception {
+        Node[] retRow = new Node[size];
+        Node[] retCol = new Node[size];
+
+        for (int i = 0; i < rowHeads.length; i++) {
+            Node rowHead = new Node(-1, -1, -1);
+            rowHead.rowLink = rowHead;
+            retRow[i] = rowHead;
+
+            Node colHead = new Node(-1, -1, -1);
+            colHead.colLink = colHead;
+            retCol[i] = colHead;
+        }
+        
+        
+        for(int i = 0; i < size; i++) {
+            Node rowHead = rowHeads[i].rowLink;
+            while(rowHead.col != -1) {
+                insertNode(retRow, retCol, rowHead.value, rowHead.col, rowHead.row);
+                rowHead = rowHead.rowLink;
+            }
+        }
+        return new SparseMatrix(retRow, retCol);
     }
 
     //Helper Functions   
@@ -250,7 +270,7 @@ public class SparseMatrix {
         size = size;
     }
 
-    public static void insertNode(Node[] rows, Node[] columns, int value, int rowIndex, int columnIndex) throws Exception {
+    public static void insertNode(Node[] rows, Node[] columns, double value, int rowIndex, int columnIndex) throws Exception {
         if (rowIndex > rows.length - 1 || columnIndex > columns.length - 1)
             throw new Exception("Index out bounds - insertNode()");
 
@@ -276,29 +296,29 @@ public class SparseMatrix {
         }
 
         if (row1.col == -1) {
-            insertNode(retRow, retCol, (int) row2.value, row2.row, row2.col);
+            insertNode(retRow, retCol, row2.value, row2.row, row2.col);
             processTwoRowsAddition(row1, row2.rowLink, retRow, retCol);
             return;
         }
 
         if (row2.col == -1) {
-            insertNode(retRow, retCol, (int) row1.value, row1.row, row1.col);
+            insertNode(retRow, retCol, row1.value, row1.row, row1.col);
             processTwoRowsAddition(row1.rowLink, row2, retRow, retCol);
             return;
         }
 
         if (row1.col != -1 && row2.col != -1) {
             if (row1.col == row2.col) {
-                insertNode(retRow, retCol, (int) row1.value + (int) row2.value, row1.row, row1.col);
+                insertNode(retRow, retCol, row1.value + row2.value, row1.row, row1.col);
                 processTwoRowsAddition(row1.rowLink, row2.rowLink, retRow, retCol);
                 return;
             }
 
             if (row1.col < row2.col) {
-                insertNode(retRow, retCol, (int) row1.value, row1.row, row1.col);
+                insertNode(retRow, retCol, row1.value, row1.row, row1.col);
                 processTwoRowsAddition(row1.rowLink, row2, retRow, retCol);
             } else {
-                insertNode(retRow, retCol, (int) row2.value, row2.row, row2.col);
+                insertNode(retRow, retCol, row2.value, row2.row, row2.col);
                 processTwoRowsAddition(row1, row2.rowLink, retRow, retCol);
             }
         }
@@ -307,12 +327,12 @@ public class SparseMatrix {
 
     public void recursiveScalarMultiply(Node current, Node[] rows, Node[] cols, int scalar) throws Exception {
         if (current.row != -1) {
-            insertNode(rows, cols, (int) current.value * scalar, current.row, current.col);
+            insertNode(rows, cols, current.value * scalar, current.row, current.col);
             recursiveScalarMultiply(current.rowLink, rows, cols, scalar);
         }
     }
 
-    public int dotProductRowAndColumn(Node row, Node column) {
+    public double dotProductRowAndColumn(Node row, Node column) {
         if (row.col == -1 || column.row == -1)
             return 0;
         if (row.col < column.row)
@@ -321,7 +341,7 @@ public class SparseMatrix {
             return dotProductRowAndColumn(row, column.colLink);
 
         if (row.col == column.row) {
-            return dotProductRowAndColumn(row.rowLink, column.colLink) + (int)(row.value * column.value);
+            return dotProductRowAndColumn(row.rowLink, column.colLink) + (row.value * column.value);
         }
         return 0;
 
