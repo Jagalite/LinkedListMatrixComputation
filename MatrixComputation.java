@@ -73,26 +73,26 @@ public class MatrixComputation {
          matrixN.print();  
 
         //Testcase Step 3
-        System.out.println("=============================11. Matrix O = 5 * B: ");
-        SparseMatrix matrixO = matrixB.scalarMultiply(5);
-        matrixO.print();        
+        // System.out.println("=============================11. Matrix O = 5 * B: ");
+        // SparseMatrix matrixO = matrixB.scalarMultiply(5);
+        // matrixO.print();        
     
-        System.out.println("=============================12. Matrix P = A * B: ");
-        SparseMatrix matrixP = matrixA.matrixMultiply(matrixB);
-        matrixP.print();
+        // System.out.println("=============================12. Matrix P = A * B: ");
+        // SparseMatrix matrixP = matrixA.matrixMultiply(matrixB);
+        // matrixP.print();
         
-        System.out.println("=============================13. Matrix Q = D^5: ");
-        SparseMatrix matrixQ = matrixD.power(5);
-        matrixQ.print();
+        // System.out.println("=============================13. Matrix Q = D^5: ");
+        // SparseMatrix matrixQ = matrixD.power(5);
+        // matrixQ.print();
         
             
         
         
         //Optional
-        System.out.println("=============================23. Matrix AA = transpose(F): ");
-        SparseMatrix matrixAA = matrixF.transpose();
-        matrixAA.print();
-        //follow the format above and fill up to 26. Matrix AD = transpose(L)
+        // System.out.println("=============================23. Matrix AA = transpose(F): ");
+        // SparseMatrix matrixAA = matrixF.transpose();
+        // matrixAA.print();
+        
         
         
         
