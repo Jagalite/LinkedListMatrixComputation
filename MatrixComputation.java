@@ -65,7 +65,7 @@ public class MatrixComputation {
          matrixL.print();  
         
          System.out.println("=============================9. Matrix M = J + A: ");
-         SparseMatrix matrixM = matrixJ.subtract(matrixA);
+         SparseMatrix matrixM = matrixJ.add(matrixA);
          matrixM.print();  
 
          System.out.println("=============================10. Matrix N = M - I: ");
