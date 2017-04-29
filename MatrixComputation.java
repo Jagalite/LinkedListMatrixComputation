@@ -72,27 +72,71 @@ public class MatrixComputation {
          SparseMatrix matrixN = matrixM.subtract(matrixI);
          matrixN.print();  
 
-        //Testcase Step 3
-        // System.out.println("=============================11. Matrix O = 5 * B: ");
-        // SparseMatrix matrixO = matrixB.scalarMultiply(5);
-        // matrixO.print();        
+        // Testcase Step 3
+        System.out.println("=============================11. Matrix O = 5 * B: ");
+        SparseMatrix matrixO = matrixB.scalarMultiply(5);
+        matrixO.print();        
     
-        // System.out.println("=============================12. Matrix P = A * B: ");
-        // SparseMatrix matrixP = matrixA.matrixMultiply(matrixB);
-        // matrixP.print();
+        System.out.println("=============================12. Matrix P = A * B: ");
+        SparseMatrix matrixP = matrixA.matrixMultiply(matrixB);
+        matrixP.print();
         
-        // System.out.println("=============================13. Matrix Q = D^5: ");
-        // SparseMatrix matrixQ = matrixD.power(5);
-        // matrixQ.print();
+        System.out.println("=============================13. Matrix Q = D ^ 5: ");
+        SparseMatrix matrixQ = matrixD.power(5);
+        matrixQ.print();
         
+        System.out.println("=============================14. Matrix R = B * D: ");
+        SparseMatrix matrixR = matrixB.matrixMultiply(matrixD);
+        matrixR.print();
+        
+        System.out.println("=============================15. Matrix S = 8 * C: ");
+        SparseMatrix matrixS = matrixC.scalarMultiply(8);
+        matrixS.print();
             
+        System.out.println("=============================16. Matrix T = E * G: ");
+        SparseMatrix matrixT = matrixE.matrixMultiply(matrixG);
+        matrixT.print();
         
+        System.out.println("=============================17. Matrix U = G * E: ");
+        SparseMatrix matrixU = matrixG.matrixMultiply(matrixE);
+        matrixU.print();
+        
+        System.out.println("=============================18. Matrix V = C ^ 8: ");
+        SparseMatrix matrixV = matrixC.power(8);
+        matrixV.print();
+        
+        System.out.println("=============================19. Matrix W = H * J: ");
+        SparseMatrix matrixW = matrixH.matrixMultiply(matrixJ);
+        matrixW.print();
+        
+        System.out.println("=============================20. Matrix X = 2 * M: ");
+        SparseMatrix matrixX = matrixM.scalarMultiply(2);
+        matrixX.print();
+        
+        System.out.println("=============================21. Matrix Y = B ^ 10: ");
+        SparseMatrix matrixY = matrixB.power(10);
+        matrixY.print();
+        
+        System.out.println("=============================22. Matrix Z = M * Y: ");
+        SparseMatrix matrixZ = matrixM.matrixMultiply(matrixT);
+        matrixZ.print();
         
         //Optional
-        // System.out.println("=============================23. Matrix AA = transpose(F): ");
-        // SparseMatrix matrixAA = matrixF.transpose();
-        // matrixAA.print();
+        System.out.println("=============================23. Matrix AA = transpose(F): ");
+        SparseMatrix matrixAA = matrixF.transpose();
+        matrixAA.print();
         
+        System.out.println("=============================24. Matrix AB = transpose(E): ");
+        SparseMatrix matrixAB = matrixE.transpose();
+        matrixAB.print();
+
+        System.out.println("=============================25. Matrix AC = transpose(V): ");
+        SparseMatrix matrixAC = matrixV.transpose();
+        matrixAC.print();
+        
+        System.out.println("=============================26. Matrix AD = transpose(L): ");
+        SparseMatrix matrixAD = matrixL.transpose();
+        matrixAD.print();
         
         
         
